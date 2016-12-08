@@ -3,7 +3,7 @@
  * Plugin Name: WP Events List
  * Plugin URI: http://adriantoro.infoeplus.com
  * Description: Display an Event list in your site with an easy to use interface and custom post types
- * Version: 0.0.3
+ * Version: 0.0.4
  * Author: Adrian Toro
  * Domain Path: /languages
  * Text Domain: wp-events-list
@@ -11,10 +11,18 @@
 **/
 
 /* Add Style and Scripts: */
-if ( !function_Exists('wpel_add_scripts_styles') ){
-	add_action( 'admin_enqueue_scripts', 'wpel_add_Scripts_styles' );
-	function wpel_add_scripts_styles(){
+if ( !function_Exists('wpel_add_admin_scripts_styles') ){
+	add_action( 'admin_enqueue_scripts', 'wpel_add_admin_scripts_styles' );
+	function wpel_add_admin_scripts_styles(){
 		wp_enqueue_style( 'wpel_admin_style', plugin_dir_url( __FILE__ ) . 'css/wpel_admin.css' );
+	}
+}
+
+if ( !function_exists('wpel_add_scripts_styles') ){
+	add_action( 'wp_enqueue_scripts', 'wpel_add_scripts_styles' );
+	function wpel_add_scripts_styles(){
+		wp_enqueue_style( 'wpel_style-css', plugin_dir_url( __FILE__ ) . 'css/wpel_style.css' );
+		
 	}
 }
 

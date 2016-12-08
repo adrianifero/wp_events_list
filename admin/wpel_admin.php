@@ -62,12 +62,28 @@ function wpel_events_meta_box_render( $post ) {
 	$event_date_start ='';
 	$event_date_end ='';
 	$event_place ='';
+	$event_place_city ='';
+	$event_place_state ='';
+	$event_place_country ='';
 	
 	$values = get_post_custom( $post->ID );
 	if ( isset($values['event_date_start']) ) {
 		$event_date_start = $values['event_date_start'][0];
+	}
+	if ( isset($values['event_date_end']) ) {
 		$event_date_end = $values['event_date_end'][0];
+	}
+	if ( isset($values['event_place']) ) {
 		$event_place = $values['event_place'][0];
+	}
+	if ( isset($values['event_place_city']) ) {
+		$event_place_city = $values['event_place_city'][0];
+	}
+	if ( isset($values['event_place_state']) ) {
+		$event_place_state = $values['event_place_state'][0];
+	}
+	if ( isset($values['event_place_country']) ) {
+		$event_place_country = $values['event_place_country'][0];
 	}
 	
 	wp_nonce_field( plugin_basename( __FILE__ ), 'event_text_box_content_nonce' );
@@ -106,9 +122,17 @@ function wpel_events_meta_box_render( $post ) {
            '</script>';	   
 	echo '</div>';
 	
-	echo '<div id="event_details" class="event_box" style="width:200px;">';	 
+	echo '<div id="event_details" class="event_box" style="width:200px;">'
+		;	 
 	echo '<h2>Place</h2>';
-	echo '<input type="text" id="event_place" name="event_place" style="width:100%; max-width:600px;" value="'.esc_attr($event_place).'" placeholder="City, Country" />';	
+	
+	echo '<input type="text" id="event_place" name="event_place" style="width:100%; max-width:600px;" value="'.esc_attr($event_place).'" placeholder="Address" />';	
+	
+	echo '<input type="text" id="event_place_city" name="event_place_city" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_city).'" placeholder="City" />';	
+	
+	echo '<input type="text" id="event_place_state" name="event_place_state" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_state).'" placeholder="State" />';	
+	
+	echo '<input type="text" id="event_place_country" name="event_place_country" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_country).'" placeholder="Country" />';	
 	echo '</div>';
 	
 		 
@@ -132,10 +156,20 @@ function wpel_event_text_box_save( $post_id ) {
     }
     $event_date_start = $_POST['event_date_start'];
     update_post_meta( $post_id, 'event_date_start', $event_date_start);
+	
     $event_date_end = $_POST['event_date_end'];
     update_post_meta( $post_id, 'event_date_end', $event_date_end);
 	
     $event_place = $_POST['event_place'];
     update_post_meta( $post_id, 'event_place', $event_place);
+	
+    $event_place_city = $_POST['event_place_city'];
+    update_post_meta( $post_id, 'event_place_city', $event_place_city);
+	
+    $event_place_state = $_POST['event_place_state'];
+    update_post_meta( $post_id, 'event_place_state', $event_place_state);
+	
+    $event_place_country = $_POST['event_place_country'];
+    update_post_meta( $post_id, 'event_place_country', $event_place_country);
 	
 }
