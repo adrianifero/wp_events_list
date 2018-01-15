@@ -1,77 +1,68 @@
 <?php 
 /**
  * Plugin Name: WP Events List
- * Plugin URI: http://adriantoro.infoeplus.com
  * Description: Display an Event list in your site with an easy to use interface and custom post types
- * Version: 0.0.4
- * Author: Adrian Toro
+ * Version: 0.0.9
+ * Author: Adrian Toro 
  * Domain Path: /languages
  * Text Domain: wp-events-list
 
 **/
 
-/* Add Style and Scripts: */
-if ( !function_Exists('wpel_add_admin_scripts_styles') ){
-	add_action( 'admin_enqueue_scripts', 'wpel_add_admin_scripts_styles' );
-	function wpel_add_admin_scripts_styles(){
-		wp_enqueue_style( 'wpel_admin_style', plugin_dir_url( __FILE__ ) . 'css/wpel_admin.css' );
-	}
-}
+include( plugin_dir_path( __FILE__ ) . 'inc/class.posttypes.php');
+include( plugin_dir_path( __FILE__ ) . 'inc/class.shortcodes.php');
+include( plugin_dir_path( __FILE__ ) . 'inc/class.admin.php');
 
-if ( !function_exists('wpel_add_scripts_styles') ){
-	add_action( 'wp_enqueue_scripts', 'wpel_add_scripts_styles' );
-	function wpel_add_scripts_styles(){
-		wp_enqueue_style( 'wpel_style-css', plugin_dir_url( __FILE__ ) . 'css/wpel_style.css' );
+class WPeventsList {
+		
+	public function __construct() {
+		
+		
+		// Scripts:
+		add_action( 'wp_enqueue_scripts', array($this, 'enqueue_scripts') );
+		
+		// Localize:
+		add_action( 'plugins_loaded', array($this,'localize') );
+		
+		// WP Admin Functions:
+		add_action( 'admin_enqueue_scripts', array('WPeventsList_Admin','enqueue_admin_scripts' ) );
+		add_filter( 'manage_wpel_event_posts_columns', array('WPeventsList_Admin','add_event_columns') );
+		add_action ('manage_wpel_event_posts_custom_column', array('WPeventsList_Admin','manage_event_columns'), 10, 2 );
+		
+		// Add meta box:
+		add_action( 'add_meta_boxes', array('WPeventsList_Admin','custom_event_metaboxes' ) );
+		add_action( 'save_post', array('WPeventsList_Admin','save_event' ) );
+	
+		
+		
+		//Post Types:
+		add_action( 'init', array('WPeventsList_PostTypes','init_post_type'), 6 );
+		
+		//Shortcodes:
+		add_shortcode( 'wpel_events', array('WPeventsList_Shortcodes', 'get_events') );
+		
+		// Alter Query:
+		add_action( 'pre_get_posts', array($this,'sort_by_event_columns') );
+		
 		
 	}
-}
+	
+	public function enqueue_scripts(){
+		wp_enqueue_style( 'wpel.style', plugins_url('css/style.css', __FILE__ ) );	
+		wp_enqueue_style( 'wpel.style.list', plugins_url('css/style.list.css', __FILE__ ) );	
+	}
+	
+	public function localize(){
+		load_plugin_textdomain( 'wp_events_list', false,  basename( dirname( __FILE__ ) ) . '/languages');
+	}
 
-/* Create Custom Post Type: */
-if ( !function_exists('wpel_create_post_types' ) ) {
-
-	add_action('init', 'wpel_create_post_types');
-	function wpel_create_post_types() {
-		$args = array(
-		  	'public' 					=> true,
-		  	'hierarchical' 				=> true,
-		  	'label'  					=> 'Events',
-			'rewrite' 					=> array('slug' => 'event'),
-			  'capability_type' => 'event',
-			  'map_meta_cap' => true,
-			  'capabilities' => array(
-
-				// meta caps (don't assign these to roles)
-				'edit_post'              => 'edit_event',
-				'read_post'              => 'read_event',
-				'delete_post'            => 'delete_event',
-
-				// primitive/meta caps
-				'create_posts'           => 'create_events',
-
-				// primitive caps used outside of map_meta_cap()
-				'edit_posts'             => 'edit_events',
-				'edit_others_posts'      => 'manage_events',
-				'publish_posts'          => 'publish_events',
-				'read_private_posts'     => 'read',
-
-				// primitive caps used inside of map_meta_cap()
-				'read'                   => 'read',
-				'delete_posts'           => 'manage_events',
-				'delete_private_posts'   => 'manage_events',
-				'delete_published_posts' => 'manage_events',
-				'delete_others_posts'    => 'manage_events',
-				'edit_private_posts'     => 'edit_events',
-				'edit_published_posts'   => 'edit_events'
-			  ),
-		  	'supports'					=> array ( 'title', 'editor', 'thumbnail', 'revisions' )
-		);
-		register_post_type( 'wpel_event', apply_filters( 'wpel_event_post_type_args', $args ) );
+	public function sort_by_event_columns( $query ){
+		if ( is_admin() && $query->get('post_type') == 'wpel_event' ){
+			$query->set( 'meta_key', 'event_date_start' );
+			$query->set( 'orderby', 'meta_value' );
+			$query->set( 'order', 'DESC' );
+		}
 	}
 }
 
-if ( is_admin() ) {
-     // We are in admin mode
-     require_once( dirname(__file__).'/admin/wpel_admin.php' );
-}
-
-require_once( dirname(__file__).'/inc/wpel_shortcodes.php' );
+$WPeventsList = new WPeventsList();

@@ -8,6 +8,13 @@ table.wpel_event_list tr td div.event {
 	border-bottom: 1px solid #d7d7d7;
 }
 
+.black table.wpel_event_list tr td * {
+	color: white;
+}
+.black table.wpel_event_list tr td div.event h6 {
+	color: rgb(235, 58, 50);
+}
+
 /* if visitor is at the same country as the event */
 table.wpel_event_list tr.visitor_country {
 }

@@ -1,0 +1,766 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp_events_list\n"
+"POT-Creation-Date: 2017-11-29 09:50-0500\n"
+"PO-Revision-Date: 2017-11-29 09:51-0500\n"
+"Last-Translator: CamburPinton <cultural@camburpinton.org>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/wpel_admin.php:9
+msgid "From"
+msgstr "De"
+
+#: admin/wpel_admin.php:10
+msgid "To"
+msgstr "Para"
+
+#: admin/wpel_admin.php:11
+msgid "Published"
+msgstr "Publicado"
+
+#: admin/wpel_admin.php:53
+msgid "Event Info"
+msgstr "Información"
+
+#: inc/wpel_shortcodes.php:113
+msgid "No upcoming events"
+msgstr "No hay eventos próximos"
+
+#~ msgid "Additional Information"
+#~ msgstr "Información Adicional"
+
+#~ msgid "Login information"
+#~ msgstr "Información de Acceso"
+
+#~ msgid "Registered on"
+#~ msgstr "Fecha Registro"
+
+#~ msgid "Last Login"
+#~ msgstr "Último Login"
+
+#~ msgid "Login Count"
+#~ msgstr "Accesos"
+
+#~ msgid "User information"
+#~ msgstr "Información de Usuario"
+
+#~ msgid "City"
+#~ msgstr "Ciudad"
+
+#~ msgid "Country"
+#~ msgstr "País"
+
+#~ msgid "Continent"
+#~ msgstr "Continente"
+
+#~ msgid "Continent ISO Code"
+#~ msgstr "Código ISO de Continente"
+
+#~ msgid "Assigned Teacher"
+#~ msgstr "Profesor Asignado"
+
+#~ msgid "User Notes"
+#~ msgstr "Notas del Usuario"
+
+#~ msgid "Registered"
+#~ msgstr "Registrado"
+
+#~ msgid "Continent Code"
+#~ msgstr "Código Continente"
+
+#~ msgid "Add New Lesson"
+#~ msgstr "Agregar nueva lección"
+
+#~ msgid "lesson"
+#~ msgstr "leccion"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Level"
+#~ msgstr "Nivel"
+
+#~ msgid "Add New"
+#~ msgstr "Agregar"
+
+#~ msgid "Add New Ebook"
+#~ msgstr "Agregar Ebook"
+
+#~ msgid "Edit Ebook"
+#~ msgstr "Editar Ebook"
+
+#~ msgid "New Ebook"
+#~ msgstr "Nuevo Ebook"
+
+#~ msgid "All Ebooks"
+#~ msgstr "Todos los Ebook"
+
+#~ msgid "View Ebook"
+#~ msgstr "Ver Ebooks"
+
+#~ msgid "Search Ebooks"
+#~ msgstr "Buscar Ebook"
+
+#~ msgid "No Ebooks found"
+#~ msgstr "No hay Ebooks"
+
+#~ msgid "No Ebooks found in Trash"
+#~ msgstr "No hay Ebooks en la papelera"
+
+#~ msgid "Chords"
+#~ msgstr "Acordes"
+
+#~ msgid "Chord"
+#~ msgstr "Acorde"
+
+#~ msgid "Add New "
+#~ msgstr "Agregar"
+
+#~ msgid "Add New Chord"
+#~ msgstr "Agregar un Acorde"
+
+#~ msgid "Edit Chord"
+#~ msgstr "Editar Acorde"
+
+#~ msgid "New Chord"
+#~ msgstr "Nuevo Acorde"
+
+#~ msgid "All Chords"
+#~ msgstr "Todos los Acordes"
+
+#~ msgid "View Chord"
+#~ msgstr "Ver Acorde"
+
+#~ msgid "Search Chords"
+#~ msgstr "Buscar Acordes"
+
+#~ msgid "No chordss found"
+#~ msgstr "No hay Acordes"
+
+#~ msgid "No chordss found in Trash"
+#~ msgstr "No hay Acordes en la papelera"
+
+#~ msgid "chord"
+#~ msgstr "acorde"
+
+#~ msgid "chord/type"
+#~ msgstr "acorde/tipo"
+
+#~ msgid "Inversion"
+#~ msgstr "Inversion"
+
+#~ msgid "chord/inversion"
+#~ msgstr "acorde/inversion"
+
+#~ msgid "Rhythms"
+#~ msgstr "Ritmos"
+
+#~ msgid "Rhythm"
+#~ msgstr "Ritmo"
+
+#~ msgid "Add New Rhythm"
+#~ msgstr "Agregar un Ritmo"
+
+#~ msgid "Edit Rhythm"
+#~ msgstr "Editar Ritmo"
+
+#~ msgid "New Rhythm"
+#~ msgstr "Nuevo Ritmo"
+
+#~ msgid "All Rhythms"
+#~ msgstr "Todos los Ritmos"
+
+#~ msgid "View Rhythm"
+#~ msgstr "Ver Ritmo"
+
+#~ msgid "Search Rhythms"
+#~ msgstr "Buscar Ritmo"
+
+#~ msgid "No rhythmss found"
+#~ msgstr "No hay Ritmos"
+
+#~ msgid "No rhythmss found in Trash"
+#~ msgstr "No hay Ritmos en la papelera"
+
+#~ msgid "rhythm"
+#~ msgstr "ritmo"
+
+#~ msgid "song"
+#~ msgstr "cancion"
+
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgid "Facebook Image"
+#~ msgstr "Imagen de Facebook\t"
+
+#~ msgid "Twitter Image"
+#~ msgstr "Imagen de Twitter"
+
+#~ msgid "Author"
+#~ msgstr "Autor"
+
+#~ msgid "Arranged by"
+#~ msgstr "Arreglos"
+
+#~ msgid "Speed"
+#~ msgstr "Velocidad"
+
+#~ msgid "Measure"
+#~ msgstr "Medida"
+
+#~ msgid "Audio Start"
+#~ msgstr "Inicio del Audio"
+
+#~ msgid "Audio Finish"
+#~ msgstr "Fin del Audio"
+
+#~ msgid "Chords in this lesson "
+#~ msgstr "Acordes de esta lección"
+
+#~ msgid "Chords in this song "
+#~ msgstr "Acordes en esta cancion"
+
+#~ msgid "%s lessons"
+#~ msgstr "%s lecciones"
+
+#~ msgid "Completed"
+#~ msgstr "Completado"
+
+#~ msgid "Intro"
+#~ msgstr "Intro"
+
+#~ msgid "Basic"
+#~ msgstr "Básico"
+
+#~ msgid "Intermediate"
+#~ msgstr "Intermedio"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanzado"
+
+#~ msgid "Require Membership"
+#~ msgstr "Requiert Membresía"
+
+#~ msgid "Event Options"
+#~ msgstr "Opciones del Evento"
+
+#~ msgid "Event Date:"
+#~ msgstr "Ficha del Evento:"
+
+#~ msgid "Event Title:"
+#~ msgstr "Título del Evento:"
+
+#~ msgid "Event Venue:"
+#~ msgstr "Sitio del Evento:"
+
+#~ msgid "City :"
+#~ msgstr "Ciudad:"
+
+#~ msgid "Country :"
+#~ msgstr "Pais:"
+
+#~ msgid "Website :"
+#~ msgstr "Sitio Web:"
+
+#~ msgid "Dashboard"
+#~ msgstr "Escritorio"
+
+#~ msgid "Logout"
+#~ msgstr "Salir"
+
+#~ msgid "/account"
+#~ msgstr "/cuenta"
+
+#~ msgid "My Account"
+#~ msgstr "Mi Cuenta"
+
+#~ msgid "/account/courses/"
+#~ msgstr "/cuenta/cursos/"
+
+#~ msgid "My Courses"
+#~ msgstr "Mis Cursos"
+
+#~ msgid "/account/report-card"
+#~ msgstr "/cuenta/boleta"
+
+#~ msgid "My Report Card"
+#~ msgstr "Mi Boleta de Notas"
+
+#~ msgid "/membership/referrals-status/"
+#~ msgstr "/membresia/reporte-de-referidos/"
+
+#~ msgid "My Referrals"
+#~ msgstr "Mis Referidos"
+
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
+
+#~ msgid "Log in"
+#~ msgstr "Entrar"
+
+#~ msgid "Register your account"
+#~ msgstr "Registra tu cuenta"
+
+#~ msgid "User Search"
+#~ msgstr "Buscar Usuario"
+
+#~ msgid "Settings: Improved user search in backend"
+#~ msgstr "Settings: Major Búsqueda de Usuarios"
+
+#~ msgid "Settings saved successfully."
+#~ msgstr "Configuration guardada."
+
+#~ msgid "Save Settings"
+#~ msgstr "Guardar Configuration"
+
+#~ msgid "Examples"
+#~ msgstr "Ejemplos"
+
+#~ msgid "Intro Part"
+#~ msgstr "Intro"
+
+#~ msgid "Video URL"
+#~ msgstr "Link del Video"
+
+#~ msgid "/my-courses"
+#~ msgstr "/mis-cursos"
+
+#~ msgid "/modify-profile"
+#~ msgstr "/modificar-perfil"
+
+#~ msgid "Edit my Info"
+#~ msgstr "Editar mi cuenta"
+
+#~ msgid "Profile"
+#~ msgstr "Perfil"
+
+#~ msgid "Teacher's Panel"
+#~ msgstr "Panel de Profesor"
+
+#~ msgid "TuCuatro Sites"
+#~ msgstr "Sitios TuCuatro"
+
+#~ msgid "Add New Song"
+#~ msgstr "Agregar una Cancion"
+
+#, fuzzy
+#~ msgid "Edit Song"
+#~ msgstr "Changer Marque"
+
+#, fuzzy
+#~ msgid "All Songs"
+#~ msgstr "Toutes les Marques"
+
+#, fuzzy
+#~ msgid "View Song"
+#~ msgstr "Visualiser Marque"
+
+#, fuzzy
+#~ msgid "Search Songs"
+#~ msgstr "Rechercher diaporamas "
+
+#, fuzzy
+#~ msgid "No Songs found"
+#~ msgstr "Pas un slideshow trouvé "
+
+#, fuzzy
+#~ msgid "No Songs found in Trash"
+#~ msgstr "Pas de marques trouvées dans la corbeille "
+
+#~ msgid "You do not have sufficient permissions to access this page."
+#~ msgstr "Nous ne pouvons vous montrer cette page"
+
+#~ msgid "Brands"
+#~ msgstr "Marques"
+
+#~ msgid "Brand"
+#~ msgstr "Marque"
+
+#~ msgid "Add New Brand"
+#~ msgstr "Ajouter une nouvelle marque "
+
+#~ msgid "New Brand"
+#~ msgstr "Nouvelle Marque"
+
+#~ msgid "partner"
+#~ msgstr "marque"
+
+#~ msgid "Brand Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "Search Brand Categories"
+#~ msgstr "Chercher Catégories"
+
+#~ msgid "Popular Brand Categories"
+#~ msgstr "Popular Catégories"
+
+#~ msgid "All Brand Categories"
+#~ msgstr "Toutes les Catégories"
+
+#~ msgid "Edit Brand Category"
+#~ msgstr "Modifier Catégorie"
+
+#~ msgid "Update Brand Category"
+#~ msgstr "Actualiser Catégorie"
+
+#~ msgid "Add New Brand Category"
+#~ msgstr "Ajouter Catégorie"
+
+#~ msgid "New Brand Category Name"
+#~ msgstr "Nouvelle Catégorie "
+
+#~ msgid "Separate Brand Categories with commas"
+#~ msgstr "Séparer les Catégories avec une virgule"
+
+#~ msgid "Add or remove Brand Categories"
+#~ msgstr "Modifie des Catégories"
+
+#~ msgid "Choose from the most used Brand Categories"
+#~ msgstr "Choisir les Catégories favorites"
+
+#~ msgid "Category"
+#~ msgstr "Catégorie"
+
+#~ msgid "Display your brands on the sidebar"
+#~ msgstr "Montrez votre catégories dans la barre latérale"
+
+#~ msgid "Our Partners"
+#~ msgstr "Nos Marques"
+
+#~ msgid "Category:"
+#~ msgstr "Catégorie"
+
+#~ msgid "There is no category"
+#~ msgstr "Il y a pas de catégories"
+
+#~ msgid "Please insert the url for this Brand"
+#~ msgstr "SVP placez l'adresse pour cette marque"
+
+#~ msgid "Url"
+#~ msgstr "Address"
+
+#~ msgid "Website"
+#~ msgstr "Site web"
+
+#~ msgid "Sorry, no posts matched your criteria."
+#~ msgstr "Désolé, aucun article ne correspond à vos critères."
+
+#~ msgid "We're sorry! This page is not available."
+#~ msgstr "Nous sommes désolés! Cette page n'est pas disponible."
+
+#~ msgid "Please visit"
+#~ msgstr "S'il vous plaît visitez"
+
+#~ msgid "or use the search box below"
+#~ msgstr "ou utilisez la zone de recherche ci-dessous"
+
+#~ msgid "Author Archives: %s"
+#~ msgstr "Author Archives: %s"
+
+#~ msgid "About %s"
+#~ msgstr "À Propos %s"
+
+#~ msgid "Nothing Found"
+#~ msgstr "Rien Trouvé"
+
+#~ msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+#~ msgstr "Toutes nos excuses, mais aucun résultat n'a été trouvé dans l'archive demandée. Peut-être qu'une recherche vous permettra de trouver un article connexe."
+
+#~ msgid "This post is password protected. Enter the password to view any comments."
+#~ msgstr "Ce poste est protégé par mot. Entrez le mot de passe pour voir les commentaires."
+
+#~ msgid "Comment navigation"
+#~ msgstr "Comment navigation"
+
+#~ msgid "&larr; Older Comments"
+#~ msgstr "&larr; Commentaires précédents"
+
+#~ msgid "Newer Comments &rarr;"
+#~ msgstr "Commentaires Suivants &rarr;"
+
+#~ msgid "Comments are closed."
+#~ msgstr "Les commentaires sont fermés."
+
+#~ msgid "Share"
+#~ msgstr "Partager"
+
+#~ msgid "Heavy &copy; 2013"
+#~ msgstr "Heavy &copy; 2013"
+
+#~ msgid "Link-en"
+#~ msgstr "Link-fr"
+
+#~ msgid "Image-en"
+#~ msgstr "Image-fr"
+
+#~ msgid "Title-en"
+#~ msgstr "Title-fr"
+
+#~ msgid "Text-en"
+#~ msgstr "Text-fr"
+
+#~ msgid "Footer Widgets"
+#~ msgstr "Widgets Footer"
+
+#~ msgid "Home Widgets"
+#~ msgstr "Widgets Accueil"
+
+#, fuzzy
+#~ msgid "Sidebar"
+#~ msgstr "Sidebar à droite"
+
+#~ msgid "en"
+#~ msgstr "fr"
+
+#~ msgid "Main Menu"
+#~ msgstr "Menu Principal"
+
+#~ msgid "Footer Menu"
+#~ msgstr "Menu Footer"
+
+#~ msgid "Edit Slideshow"
+#~ msgstr "Modifier diaporama"
+
+#~ msgid "New Slideshow"
+#~ msgstr "Nouveau diaporama"
+
+#~ msgid "All Slideshow"
+#~ msgstr "Toutes diaporama"
+
+#~ msgid "View Slideshow"
+#~ msgstr "Voir le diaporama"
+
+#~ msgid "Slideshows"
+#~ msgstr "Spectacles"
+
+#~ msgid "Theme Settings"
+#~ msgstr "Paramètres thème"
+
+#~ msgid "Change this box and add special options to your theme"
+#~ msgstr "Modifier cette case et ajouter des options spéciales pour votre thème"
+
+#~ msgid "Theme Meta Tags"
+#~ msgstr "Meta Tags thème"
+
+#~ msgid "Meta Keywords"
+#~ msgstr "Meta Keywords"
+
+#~ msgid "Ex. mysite, myservice, myproduct"
+#~ msgstr "Ex. monsite, monservice, monproduit"
+
+#~ msgid "Meta Description"
+#~ msgstr "Meta Description"
+
+#~ msgid "Describe your site for google search engine"
+#~ msgstr "Décrivez votre site pour les moteurs de recherche google"
+
+#~ msgid "Facebook Meta Tags"
+#~ msgstr "Facebook Meta Tags"
+
+#~ msgid "Facebook Default Image"
+#~ msgstr "Image par défaut Facebook"
+
+#~ msgid "Default image to show when someone shares your posts on facebook"
+#~ msgstr "Image par défaut à afficher lorsque quelqu'un partage vos messages sur facebook"
+
+#~ msgid "Facebook Description"
+#~ msgstr "Facebook Description"
+
+#~ msgid "Default description to show when someone shares your posts on facebook"
+#~ msgstr "Description par défaut pour montrer quand quelqu'un partage vos messages sur facebook"
+
+#~ msgid "Google Analytics"
+#~ msgstr "Google Analytics"
+
+#~ msgid "Google Analytics Code"
+#~ msgstr "Code Google Analytics"
+
+#~ msgid "Insert your Google Analytics code here"
+#~ msgstr "Insérez votre code Google Analytics ici"
+
+#~ msgid "Social Links"
+#~ msgstr "Liens sociaux"
+
+#~ msgid "Insert your Twitter URL code here"
+#~ msgstr "Insérez votre code URL Twitter ici"
+
+#~ msgid "Facebook URL"
+#~ msgstr "URL Facebook"
+
+#~ msgid "Insert your Facebook URL here"
+#~ msgstr "Insérez l'URL de votre Facebook ici"
+
+#~ msgid "Youtube URL"
+#~ msgstr "URL Youtube"
+
+#~ msgid "Insert your Youtube URL here"
+#~ msgstr "Insérez votre URL Youtube ici"
+
+#~ msgid "Flickr URL"
+#~ msgstr "URL Flickr"
+
+#~ msgid "Insert your Flickr URL here"
+#~ msgstr "Insérez votre URL Flickr ici"
+
+#~ msgid "Pinterest URL"
+#~ msgstr "URL Pinterest"
+
+#~ msgid "Insert your Pinterest URL here"
+#~ msgstr "Insérez votre URL Pinterest ici"
+
+#~ msgid "Foursquare URL"
+#~ msgstr "URL Foursquare"
+
+#~ msgid "Insert your Foursquare URL here"
+#~ msgstr "Insérez votre URL Foursquare ici"
+
+#~ msgid "Instagram URL"
+#~ msgstr "URL Instagram"
+
+#~ msgid "Insert your Instagram URL here"
+#~ msgstr "Insérez l'URL de votre Instagram ici"
+
+#~ msgid "Right Sidebar"
+#~ msgstr "Sidebar à droite"
+
+#~ msgid "Widgets in this area will be shown on the right-hand side."
+#~ msgstr "Widgets dans ce domaine seront affichés sur le côté droit."
+
+#~ msgid "LATEST NEWS"
+#~ msgstr "NOUVELLES"
+
+#~ msgid "Title:"
+#~ msgstr "Titre:"
+
+#~ msgid "first name"
+#~ msgstr "prénom"
+
+#~ msgid "last name"
+#~ msgstr "nom"
+
+#~ msgid "e-mail"
+#~ msgstr "courriel"
+
+#~ msgid "Sign up"
+#~ msgstr "Abonnez-vous"
+
+#~ msgid "for the newsletter"
+#~ msgstr "&#224 l'infolettre"
+
+#~ msgid "Join now"
+#~ msgstr "Soumettre"
+
+#~ msgid "August 10-11"
+#~ msgstr "10 - 11 Août"
+
+#~ msgid "Montréal, QC"
+#~ msgstr "Montréal, QC"
+
+#~ msgid "Countdown to"
+#~ msgstr "Décompote pour"
+
+#~ msgid "Heavy MTL"
+#~ msgstr "Heavy MTL"
+
+#~ msgid "Posted on %s at %s"
+#~ msgstr "Publié le %s à %s"
+
+#~ msgid "SPONSORS"
+#~ msgstr "COMMANDITAIRES"
+
+#~ msgid "PARTNERS"
+#~ msgstr "PARTENAIRES"
+
+#~ msgid "MEDIA PARTNERS"
+#~ msgstr "PARTENAIRES MEDIAS"
+
+#~ msgid "Osheaga Sidebar"
+#~ msgstr "Sidebar &#224 droite"
+
+#~ msgid "AUGUST 2 - 4"
+#~ msgstr "AOÛT 2 - 4"
+
+#~ msgid "COUNTDOWN TO"
+#~ msgstr "DÉCOMPTE POUR"
+
+#~ msgid "OSHEAGA"
+#~ msgstr "OSHEAGA"
+
+#~ msgid "We will be posting more news soon, be sure to come back!."
+#~ msgstr "n’exist pas d'info a montrer"
+
+#~ msgid "Search result for:"
+#~ msgstr "Résultat de la recherche pour:"
+
+#~ msgid "Events"
+#~ msgstr "Événements"
+
+#~ msgid "News"
+#~ msgstr "Nouvelles"
+
+#~ msgid "Continue Reading"
+#~ msgstr "la suite"
+
+#~ msgid "Sorry, no results for:"
+#~ msgstr "Désolé, aucun résultat pour:"
+
+#~ msgid "Enter your search string"
+#~ msgstr "Entrez votre chaîne de recherche"
+
+#~ msgid "Tweet"
+#~ msgstr "Tweet"
+
+#~ msgid "Shows"
+#~ msgstr "Spectacles"
+
+#~ msgid "Calendar"
+#~ msgstr "Calendrier"
+
+#~ msgid "More Events"
+#~ msgstr "Autres événements"
+
+#~ msgid "Archive"
+#~ msgstr "Archives"
+
+#~ msgid "en_US"
+#~ msgstr "en_US"
+
+#~ msgid "With"
+#~ msgstr "Avec"
+
+#~ msgid "Doors"
+#~ msgstr "Portes"
+
+#, fuzzy
+#~ msgid "Show"
+#~ msgstr "Spectacles"
+
+#~ msgid "Price"
+#~ msgstr "Prix"
+
+#, fuzzy
+#~ msgid "Free Event"
+#~ msgstr "Autres événements"
+
+#~ msgid "FREE EVENT"
+#~ msgstr "ÉVÉNEMENT GRATUIT"
+
+#~ msgid "Buy now"
+#~ msgstr "Acheter maintenant"
+
+#, fuzzy
+#~ msgid "More info"
+#~ msgstr "Autres événements"
+
+#~ msgid "Copyright"
+#~ msgstr "Copyright"
