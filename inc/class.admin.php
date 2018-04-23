@@ -46,8 +46,8 @@ class WPeventsList_Admin {
 			__( 'Event Info' ),
 			array('WPeventsList_Admin', 'meta_box_render'),
 			'wpel_event',
-			'advanced',
-			'default'
+			'normal',
+			'high'
 		);
 	}
 

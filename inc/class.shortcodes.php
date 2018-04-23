@@ -3,17 +3,17 @@
 class WPeventsList_Shortcodes {
 	
 	/* Events shortcode */
-	public function get_events(){
+	public function get_events( $atts ){
 		global $user_location;
 	
-		$atts = shortcode_atts( array(
-			'qty' => 10,
+		$filters = shortcode_atts( array(
+			'qty' => -1,
 			'cat' => '', // 56: APAC
 			'type' => 'wpel_event',
 			'region' => ''
 		), $atts, 'rossvideo' );
 
-		$selectedRegion = $atts['region'];
+		$selectedRegion = $filters['region'];
 
 		$region['APAC'] = array( 'Australia', 'Bangladesh', 'Bhutan', 'Brunei', 'Burma', 'Cambodia', 'China', 'Fiji', 'India', 'Indonesia', 'Japan', 'Kiribati', 'Laos', 'Malaysia', 'Maldives', 'Micronesia', 'Mongolia', 'Nauru', 'Nepal', 'North Korea', 'Pakistan', 'Palau', 'Philippines', 'Samoa', 'Singapore', 'South Korea', 'Sri Lanka', 'Thailand', 'Tonga', 'Tuvalu', 'Vanuatu', 'Vietnam' );
 
@@ -25,10 +25,10 @@ class WPeventsList_Shortcodes {
 
 		// create args for Query:
 		$args = array( 
-			'post_type' => $atts['type'], 
+			'post_type' => $filters['type'], 
 			'orderby' => 'meta_value',
 			'order' => 'ASC',
-			'posts_per_page' => -1,
+			'posts_per_page' => $filters['qty'],
 			'meta_query' => array(
 								'relation' => 'AND',
 								array(
@@ -40,7 +40,7 @@ class WPeventsList_Shortcodes {
 		); 
 
 		// If querying events:
-		if ( !empty( $atts['region'] ) ){
+		if ( !empty( $filters['region'] ) ){
 			$args['meta_query'][] = 
 				array(
 					'key' => 'event_place_country',

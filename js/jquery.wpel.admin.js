@@ -1,7 +1,8 @@
+
 (function( $ ) {
     "use strict";
 	$(function() {
-
+	
 		
 		if ( $('body.post-type-wpel_event').length > 0 ){
 			

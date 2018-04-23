@@ -3,6 +3,11 @@ table.wpel_event_list tr {}
 table.wpel_event_list tr td {
 	border-bottom: 1px solid #d7d7d7;
 }
+
+table.wpel_event_list tr td div.side_date {
+    min-width: 100px;
+	font-weight: bold;
+}
 table.wpel_event_list tr td div.event {
 	padding: 15px 5px 0px 10px;
 	clear: both;
