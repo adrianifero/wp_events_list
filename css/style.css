@@ -13,25 +13,11 @@ table.wpel_event_list tr td div.event {
 	clear: both;
 }
 
-.black table.wpel_event_list tr td * {
+.black table.wpel_event_list tr td * {v
 	color: white;
 }
 .black table.wpel_event_list tr td div.event h6 {
 	color: rgb(235, 58, 50);
-}
-
-/* if visitor is at the same country as the event */
-table.wpel_event_list tr.visitor_country {
-}
-table.wpel_event_list tr.visitor_country td {
-    border: 0px;
-}
-table.wpel_event_list tr.visitor_country td div.event {
-    outline: none;
-    border-color: #9fed9e;
-    box-shadow: 0 0 10px #a3ed9e;
-    background: rgba(159, 237, 158, 0.12);
-	border-bottom: 0px;
 }
 
 /* Overrides for custom pages */

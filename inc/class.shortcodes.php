@@ -73,8 +73,8 @@ class WPeventsList_Shortcodes {
 
 
 				$event_custom_class = '';
-				if ( !empty($user_location['country']) && ( $user_location['country'] == $event_place_country ) ){
-					$event_custom_class = 'visitor_country';
+				if ( !empty($user_location['country']) && ( $user_location['country'] == strtoupper($event_place_country) ) ){
+					$event_custom_class = 'user_country';
 				}
 
 				$event_title = !empty($event_link) ? '<h6><a target="_blank" href="'.$event_link.'">'.get_the_title().'</a></h6>' : '<h6>'.get_the_title().'</h6>';
