@@ -7,7 +7,7 @@ class WPeventsList_Admin {
 	public function enqueue_admin_scripts(){
 		wp_enqueue_style( 'wpel_admin_style', plugins_url('css/style.admin.css', __DIR__ ) );
 		
-		wp_register_script( 'wpel_admin_script', plugin_dir_url( __DIR__ ) . 'js/jquery.wpel.admin.js', array('jquery'), '1.0.0' );
+		wp_register_script( 'wpel_admin_script', plugin_dir_url( __DIR__ ) . 'js/jquery.admin.js', array('jquery'), '1.0.0' );
         wp_enqueue_script( 'wpel_admin_script' );
 		
 		wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css' );
