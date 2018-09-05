@@ -85,7 +85,7 @@ class WPeventsList_Shortcodes {
 				$event_list .= 			'<div class="side_date">
 											<div class="month">'.$month.'</div>
 											<div class="day">'.$dates.'</div>
-											<div class="day">'.$year.'</div>
+											<div class="year">'.$year.'</div>
 										</div>
 									</td>';
 
