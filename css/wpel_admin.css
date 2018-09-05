@@ -1,0 +1,13 @@
+/* CSS Document */
+
+.event_box { display:inline-block;vertical-align:top; margin:15px; } 
+.ui-widget-header {
+	border: 1px solid #F9F9F9;
+	background: #EBEBEB 50% 50% repeat-x;
+	color: #222222;
+	font-weight: bold;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background:#F1F1F1;color:#666; } 
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: #000; color:#FFF; } 
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight { background: #FCFCFC; }
+#events-extras .inside { text-align:center; }

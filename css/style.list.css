@@ -8,6 +8,10 @@ table.wpel_event_list tr td div.side_date {
     min-width: 100px;
 	font-weight: bold;
 }
+table.wpel_event_list tr td div.side_date .year {
+    color: #ccc;
+    font-weight: normal;
+}
 table.wpel_event_list tr td div.event {
 	padding: 15px 5px 0px 10px;
 	clear: both;
@@ -22,7 +26,7 @@ table.wpel_event_list tr.user_country {
 table.wpel_event_list tr.user_country td {
     border: 0px;
 }
-table.wpel_event_list tr.user_country td div.event {
+table.wpel_event_list tr.user_country td {
     outline: none;
     background: rgba(159, 237, 158, 0.12);
 }

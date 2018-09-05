@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Events List
  * Description: Display an Event list in your site with an easy to use interface and custom post types
- * Version: 0.1.3
+ * Version: 0.1.4
  * Author: Adrian Toro 
  * Domain Path: /languages
  * Text Domain: wp-events-list
@@ -48,8 +48,8 @@ class WPeventsList {
 	}
 	
 	public function enqueue_scripts(){
-		wp_enqueue_style( 'wpel.style', plugins_url('css/style.css', __FILE__ ), array(), '180424' );	
-		wp_enqueue_style( 'wpel.style.list', plugins_url('css/style.list.css', __FILE__ ), array(), '180424' );	
+		wp_enqueue_style( 'wpel.style', plugins_url('css/style.css', __FILE__ ), array(), '180425' );	
+		wp_enqueue_style( 'wpel.style.list', plugins_url('css/style.list.css', __FILE__ ), array(), '180425' );	
 	}
 	
 	public function localize(){

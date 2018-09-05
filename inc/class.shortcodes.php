@@ -61,6 +61,7 @@ class WPeventsList_Shortcodes {
 				$event_starts = get_post_meta( get_the_ID(), 'event_date_start' , true );
 				$event_ends = get_post_meta( get_the_ID(), 'event_date_end' , true );
 				$month = date("M",strtotime($event_starts)); 
+				$year = date("Y",strtotime($event_starts)); 
 				$day_starts = date("d",strtotime($event_starts)); 
 				$day_ends = date("d",strtotime($event_ends)); 
 				$dates = ( !empty( $day_ends ) && $day_ends != $day_starts ) ? $day_starts .' - '. $day_ends : $day_starts; 
@@ -73,7 +74,7 @@ class WPeventsList_Shortcodes {
 
 
 				$event_custom_class = '';
-				if ( !empty($user_location['country']) && ( $user_location['country'] == strtoupper($event_place_country) ) ){
+				if ( !empty($user_location['country']) && ( $user_location['country'] == lcfirst(strtolower($event_place_country)) ) ){
 					$event_custom_class = 'user_country';
 				}
 
@@ -84,6 +85,7 @@ class WPeventsList_Shortcodes {
 				$event_list .= 			'<div class="side_date">
 											<div class="month">'.$month.'</div>
 											<div class="day">'.$dates.'</div>
+											<div class="day">'.$year.'</div>
 										</div>
 									</td>';
 
