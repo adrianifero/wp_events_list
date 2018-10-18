@@ -24,3 +24,30 @@ table.wpel_event_list tr td div.event {
 body.page-events-calendar table.wpel_event_list tr td {
 	border-bottom: 0px; 
 }
+
+
+.event_featured {
+	margin: 12px;
+    padding: 12px;
+}
+.event_featured .event_title {
+	margin: 2px;
+}
+.event_featured .event_details {
+	margin: 2px;
+}
+.event_featured .event_button {
+	font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 12px;
+    padding: 15px 33px;
+    display: inline-block;
+    -webkit-appearance: none;
+    color: #383838 !important;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #ebebeb;
+}

@@ -7,8 +7,11 @@ class WPeventsList_Admin {
 	public function enqueue_admin_scripts(){
 		wp_enqueue_style( 'wpel_admin_style', plugins_url('css/style.admin.css', __DIR__ ) );
 		
-		wp_register_script( 'wpel_admin_script', plugin_dir_url( __DIR__ ) . 'js/jquery.admin.js', array('jquery'), '1.0.0' );
-        wp_enqueue_script( 'wpel_admin_script' );
+		 
+		if ( 'wpel_event' === get_post_type() ) {
+			wp_register_script( 'wpel_admin_script', plugin_dir_url( __DIR__ ) . 'js/jquery.wpel.admin.js', array('jquery'), '1.0.0' );
+       		wp_enqueue_script( 'wpel_admin_script' );
+		}
 		
 		wp_enqueue_style( 'jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css' );
 		wp_deregister_script( 'jquery-ui');
@@ -46,7 +49,7 @@ class WPeventsList_Admin {
 			__( 'Event Info' ),
 			array('WPeventsList_Admin', 'meta_box_render'),
 			'wpel_event',
-			'normal',
+			'below_title',
 			'high'
 		);
 	}
@@ -54,6 +57,7 @@ class WPeventsList_Admin {
 	public function meta_box_render( $post ) {
 		$event_date_start ='';
 		$event_date_end ='';
+		$event_featured ='';
 		$event_place ='';
 		$event_place_city ='';
 		$event_place_state ='';
@@ -69,6 +73,9 @@ class WPeventsList_Admin {
 		}
 		if ( isset($values['event_place']) ) {
 			$event_place = $values['event_place'][0];
+		}
+		if ( isset($values['event_featured']) ) {
+			$event_featured = $values['event_featured'][0];
 		}
 		if ( isset($values['event_place_city']) ) {
 			$event_place_city = $values['event_place_city'][0];
@@ -98,20 +105,27 @@ class WPeventsList_Admin {
 		
 		echo '</div>';
 
-		echo '<div id="event_details" class="event_box" style="width:200px;">'
-			;	 
-		echo '<h2>Place</h2>';
+		echo '<div id="event_details" class="event_box" style="width:200px;">';	 
 
-		echo '<input type="text" id="event_place" name="event_place" style="width:100%; max-width:600px;" value="'.esc_attr($event_place).'" placeholder="Address" />';	
+			echo '<h2>Place</h2>';
 
-		echo '<input type="text" id="event_place_city" name="event_place_city" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_city).'" placeholder="City" />';	
+			echo '<input type="text" id="event_place" name="event_place" style="width:100%; max-width:600px;" value="'.esc_attr($event_place).'" placeholder="Address" />';	
 
-		echo '<input type="text" id="event_place_state" name="event_place_state" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_state).'" placeholder="State" />';	
+			echo '<input type="text" id="event_place_city" name="event_place_city" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_city).'" placeholder="City" />';	
 
-		echo '<input type="text" id="event_place_country" name="event_place_country" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_country).'" placeholder="Country" />';	
+			echo '<input type="text" id="event_place_state" name="event_place_state" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_state).'" placeholder="State" />';	
 
-		echo '<br/><br/><h2>Event Link</h2>';
-		echo '<input type="text" id="event_link" name="event_link" style="width:100%; max-width:600px;" value="'.esc_attr($event_link).'" placeholder="Link (Facebook, Eventbrite, etc)" />';	
+			echo '<input type="text" id="event_place_country" name="event_place_country" style="width:100%; max-width:600px;" value="'.esc_attr($event_place_country).'" placeholder="Country" />';	
+
+			echo '<br/><br/><h2>Event Link</h2>';
+			echo '<input type="text" id="event_link" name="event_link" style="width:100%; max-width:600px;" value="'.esc_attr($event_link).'" placeholder="Link (Facebook, Eventbrite, etc)" />';	
+
+			echo '<p style="text-align:left;">';
+
+			echo '<input type="checkbox" id="event_featured" name="event_featured" value="1" ' .checked( $event_featured, true, false ). ' /> Featured';	
+
+			echo '</p>';
+
 
 		echo '</div>';
 
@@ -139,6 +153,9 @@ class WPeventsList_Admin {
 
 		$event_date_end = $_POST['event_date_end'];
 		update_post_meta( $post_id, 'event_date_end', $event_date_end);
+
+		$event_featured = $_POST['event_featured'];
+		update_post_meta( $post_id, 'event_featured', $event_featured);
 
 		$event_place = $_POST['event_place'];
 		update_post_meta( $post_id, 'event_place', $event_place);

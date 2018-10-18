@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Events List
  * Description: Display an Event list in your site with an easy to use interface and custom post types
- * Version: 0.1.4
+ * Version: 0.1.5
  * Author: Adrian Toro 
  * Domain Path: /languages
  * Text Domain: wp-events-list
@@ -34,12 +34,19 @@ class WPeventsList {
 		add_action( 'save_post', array('WPeventsList_Admin','save_event' ) );
 	
 		
+		add_action('edit_form_after_title', function() {
+			global $post, $wp_meta_boxes;
+			do_meta_boxes(get_current_screen(), 'below_title', $post);
+			unset($wp_meta_boxes[get_post_type($post)]['below_title']);
+		});
+		
 		
 		//Post Types:
 		add_action( 'init', array('WPeventsList_PostTypes','init_post_type'), 6 );
 		
 		//Shortcodes:
 		add_shortcode( 'wpel_events', array('WPeventsList_Shortcodes', 'get_events') );
+		add_shortcode( 'wpel_featured', array('WPeventsList_Shortcodes', 'get_featured') );
 		
 		// Alter Query:
 		add_action( 'pre_get_posts', array($this,'sort_by_event_columns') );
@@ -48,7 +55,7 @@ class WPeventsList {
 	}
 	
 	public function enqueue_scripts(){
-		wp_enqueue_style( 'wpel.style', plugins_url('css/style.css', __FILE__ ), array(), '180425' );	
+		wp_enqueue_style( 'wpel.style', plugins_url('css/style.css', __FILE__ ), array(), '181007v01' );	
 		wp_enqueue_style( 'wpel.style.list', plugins_url('css/style.list.css', __FILE__ ), array(), '180425' );	
 	}
 	
