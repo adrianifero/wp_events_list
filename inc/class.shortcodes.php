@@ -9,9 +9,11 @@ class WPeventsList_Shortcodes {
 		$filters = shortcode_atts( array(
 			'qty' => 1,
 			'featured' => 1, 
-			'type' => 'wpel_event'
+			'type' => 'wpel_event',
+			'default_link' => '/company/events/',
 		), $atts, 'rossvideo' );
 		
+		$seemoreurl = $atts['default_link'];
 		
 		// create args for Query:
 		$args = array( 
@@ -55,7 +57,10 @@ class WPeventsList_Shortcodes {
 				$event_place_city = get_post_meta( get_the_ID(), 'event_place_city' , true );
 				$event_place_state = get_post_meta( get_the_ID(), 'event_place_state' , true );
 				$event_place_country = get_post_meta( get_the_ID(), 'event_place_country' , true );
-				$event_link = get_post_meta( get_the_ID(), 'event_link' , true );
+				$event_url = get_post_meta( get_the_ID(), 'event_link' , true );
+		
+				$event_url = !empty($event_url) ? $event_url : $seemoreurl;
+				$event_link =  '<a class="event_button" href="'.$event_url.'">Read More</a>';
 
 
 				$event_custom_class = '';
@@ -65,7 +70,7 @@ class WPeventsList_Shortcodes {
 
 				$event_list .= '<div class="event_featured">';
 				
-					$event_list .= !empty($event_link) ? '<h6 class="event_title"><a target="_blank" href="'.$event_link.'">'.get_the_title().'</a></h6>' : '<h6>'.get_the_title().'</h6>';
+					$event_list .= !empty($event_url) ? '<h6 class="event_title"><a target="_blank" href="'.$event_url.'">'.get_the_title().'</a></h6>' : '<h6>'.get_the_title().'</h6>';
 
 					$event_list .= '<p class="event_details">';
 
@@ -73,23 +78,27 @@ class WPeventsList_Shortcodes {
 
 					$event_list .= '</p>';
 
-					$event_list .= !empty($event_link) ? '<a class="event_button" href="'.$event_link.'">Read More</a>' : '';
+					$event_list .= $event_link;
 
 				$event_list .= '</div>';
 
 			endwhile; 
+		
+			restore_current_blog();
 
 			return $event_list;
 		else:
 			if(is_multisite()){ restore_current_blog(); }
 			wp_reset_postdata(); 
 
-			$event_list = '<p>' . __('No upcoming events','wp_events_list') . '</p>';
+			$event_list = '<div class="event_featured"><p>' . __('Take a look at where we’ll be next!','wp_events_list') . '</p>' . '<a target="_blank" class="event_button" href="/company/events">Events Calendar</a></div>';
 			return $event_list;
 
 		endif; 
 
 		if(is_multisite()){ restore_current_blog(); }
+		
+		
 		wp_reset_postdata(); 
 		
 		
@@ -204,6 +213,8 @@ class WPeventsList_Shortcodes {
 								</tr>';
 			endwhile; 
 			$event_list .= '</table>';
+		
+			restore_current_blog();
 
 			return $event_list;
 		else:
