@@ -2,7 +2,7 @@
 
 class WPeventsList_PostTypes { 
 
-	public function init_post_type() {
+	public static function init_post_type() {
 		$args = array(
 		  	'public' 					=> true,
 		  	'hierarchical' 				=> true,

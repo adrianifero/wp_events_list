@@ -3,8 +3,10 @@
 class WPeventsList_Shortcodes {
 	
 	/* Events shortcode */
-	public function get_featured( $atts ){
+	public static function get_featured( $atts ){
 		global $user_location;
+		
+		$event_list = '';
 	
 		$filters = shortcode_atts( array(
 			'qty' => 1,
@@ -106,7 +108,7 @@ class WPeventsList_Shortcodes {
 	}
 	
 	/* Events shortcode */
-	public function get_events( $atts ){
+	public static function get_events( $atts ){
 		global $user_location;
 	
 		$filters = shortcode_atts( array(

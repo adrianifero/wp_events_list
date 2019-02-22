@@ -4,7 +4,7 @@
 
 class WPeventsList_Admin { 
 	
-	public function enqueue_admin_scripts(){
+	public static function enqueue_admin_scripts(){
 		wp_enqueue_style( 'wpel_admin_style', plugins_url('css/style.admin.css', __DIR__ ) );
 		
 		 
