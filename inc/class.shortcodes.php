@@ -4,6 +4,10 @@ class WPeventsList_Shortcodes {
 	
 	/* Events shortcode */
 	public static function get_featured( $atts ){
+		
+		wp_enqueue_style( 'wpel.style' );
+		wp_enqueue_style( 'wpel.style.list' );
+		
 		global $user_location;
 		
 		$event_list = '';
@@ -39,76 +43,86 @@ class WPeventsList_Shortcodes {
 							) 
 		); 
 
-		if(is_multisite()){ switch_to_blog(1); }
-
-		$events_query = new WP_Query ( $args );
-
-		if ( $events_query->have_posts() ): 
-
-			while ( $events_query->have_posts() ) : $events_query->the_post();
-
-				$event_starts = get_post_meta( get_the_ID(), 'event_date_start' , true );
-				$event_ends = get_post_meta( get_the_ID(), 'event_date_end' , true );
-				$month = date("M",strtotime($event_starts)); 
-				$year = date("Y",strtotime($event_starts)); 
-				$day_starts = date("d",strtotime($event_starts)); 
-				$day_ends = date("d",strtotime($event_ends)); 
-				$dates = ( !empty( $day_ends ) && $day_ends != $day_starts ) ? $day_starts .' - '. $day_ends : $day_starts; 
-
-				$event_place = get_post_meta( get_the_ID(), 'event_place' , true );
-				$event_place_city = get_post_meta( get_the_ID(), 'event_place_city' , true );
-				$event_place_state = get_post_meta( get_the_ID(), 'event_place_state' , true );
-				$event_place_country = get_post_meta( get_the_ID(), 'event_place_country' , true );
-				$event_url = get_post_meta( get_the_ID(), 'event_link' , true );
+		$event_list = get_transient( 'ross_event_featured' );
 		
-				$event_url = !empty($event_url) ? $event_url : $seemoreurl;
-				$event_link =  '<a class="event_button" href="'.$event_url.'">Read More</a>';
+		if ( false === $event_list ) :
+			if(is_multisite()){ switch_to_blog(1); }
+
+			$events_query = new WP_Query ( $args );
+
+			if ( $events_query->have_posts() ): 
+
+				while ( $events_query->have_posts() ) : $events_query->the_post();
+
+					$event_meta = get_post_meta( get_the_ID() );
+					//print_r( $event_meta );
+
+					$event_starts = $event_meta ['event_date_start'][0];
+					$event_ends = $event_meta ['event_date_end'][0];
+					$month = date("M",strtotime($event_starts)); 
+					$year = date("Y",strtotime($event_starts)); 
+					$day_starts = date("d",strtotime($event_starts)); 
+					$day_ends = date("d",strtotime($event_ends)); 
+					$dates = ( !empty( $day_ends ) && $day_ends != $day_starts ) ? $day_starts .' - '. $day_ends : $day_starts; 
+
+					$event_place = $event_meta ['event_place'];
+					$event_place_city = $event_meta ['event_place_city'][0];
+					$event_place_state = $event_meta ['event_place_state'][0];
+					$event_place_country = $event_meta ['event_place_country'][0];
+					$event_url = $event_meta ['event_link'][0];
+
+					$event_url = !empty($event_url) ? $event_url : $seemoreurl;
+					$event_link =  '<a class="event_button" href="'.$event_url.'">Read More</a>';
+					$event_title = get_the_title();
 
 
-				$event_custom_class = '';
-				if ( !empty($user_location['country']) && ( $user_location['country'] == lcfirst(strtolower($event_place_country)) ) ){
-					$event_custom_class = 'user_country';
-				}
+					$event_custom_class = '';
+					if ( !empty($user_location['country']) && ( $user_location['country'] == lcfirst(strtolower($event_place_country)) ) ){
+						$event_custom_class = 'user_country';
+					}
 
-				$event_list .= '<div class="event_featured">';
+					$event_list .= '<div class="event_featured">';
+
+						$event_list .= !empty($event_url) ? '<h6 class="event_title"><a target="_blank" href="'.$event_url.'">'.$event_title.'</a></h6>' : '<h6>'.$event_title.'</h6>';
+
+						$event_list .= '<p class="event_details">';
+
+						$event_list .=  $event_place_city.', '. $event_place_country .' - '.$month.' '.$dates.', '.$year;
+
+						$event_list .= '</p>';
+
+						$event_list .= $event_link;
+
+					$event_list .= '</div>';
+
+				endwhile; 
+
+
+
+			else:
+
+				$event_list = '<div class="event_featured"><p>' . __('Take a look at where we’ll be next!','wp_events_list') . '</p>' . '<a target="_blank" class="event_button" href="/company/events">Events Calendar</a></div>';
 				
-					$event_list .= !empty($event_url) ? '<h6 class="event_title"><a target="_blank" href="'.$event_url.'">'.get_the_title().'</a></h6>' : '<h6>'.get_the_title().'</h6>';
 
-					$event_list .= '<p class="event_details">';
+			endif; 
 
-					$event_list .=  $event_place_city.', '. $event_place_country .' - '.$month.' '.$dates.', '.$year;
-
-					$event_list .= '</p>';
-
-					$event_list .= $event_link;
-
-				$event_list .= '</div>';
-
-			endwhile; 
-		
-			restore_current_blog();
-
-			return $event_list;
-		else:
 			if(is_multisite()){ restore_current_blog(); }
 			wp_reset_postdata(); 
-
-			$event_list = '<div class="event_featured"><p>' . __('Take a look at where we’ll be next!','wp_events_list') . '</p>' . '<a target="_blank" class="event_button" href="/company/events">Events Calendar</a></div>';
-			return $event_list;
-
-		endif; 
-
-		if(is_multisite()){ restore_current_blog(); }
+			set_transient( 'ross_event_featured', $event_list, 12 * HOUR_IN_SECONDS );
+			
 		
+		endif;
 		
-		wp_reset_postdata(); 
-		
+		return $event_list;
 		
 		
 	}
 	
 	/* Events shortcode */
 	public static function get_events( $atts ){
+		wp_enqueue_style( 'wpel.style' );
+		wp_enqueue_style( 'wpel.style.list' );
+		
 		global $user_location;
 	
 		$filters = shortcode_atts( array(
@@ -154,82 +168,88 @@ class WPeventsList_Shortcodes {
 				);
 		}
 
-		if(is_multisite()){ switch_to_blog(1); }
-
-		$events_query = new WP_Query ( $args );
-
-		if ( $events_query->have_posts() ): 
-
-			$event_list = '<table class="wpel_event_list" width="600" border="0" cellspacing="2">';
-			while ( $events_query->have_posts() ) : $events_query->the_post();
-
-				$event_starts = get_post_meta( get_the_ID(), 'event_date_start' , true );
-				$event_ends = get_post_meta( get_the_ID(), 'event_date_end' , true );
-				$month = date("M",strtotime($event_starts)); 
-				$year = date("Y",strtotime($event_starts)); 
-				$day_starts = date("d",strtotime($event_starts)); 
-				$day_ends = date("d",strtotime($event_ends)); 
-				$dates = ( !empty( $day_ends ) && $day_ends != $day_starts ) ? $day_starts .' - '. $day_ends : $day_starts; 
-
-				$event_place = get_post_meta( get_the_ID(), 'event_place' , true );
-				$event_place_city = get_post_meta( get_the_ID(), 'event_place_city' , true );
-				$event_place_state = get_post_meta( get_the_ID(), 'event_place_state' , true );
-				$event_place_country = get_post_meta( get_the_ID(), 'event_place_country' , true );
-				$event_link = get_post_meta( get_the_ID(), 'event_link' , true );
-
-
-				$event_custom_class = '';
-				if ( !empty($user_location['country']) && ( $user_location['country'] == lcfirst(strtolower($event_place_country)) ) ){
-					$event_custom_class = 'user_country';
-				}
-
-				$event_title = !empty($event_link) ? '<h6><a target="_blank" href="'.$event_link.'">'.get_the_title().'</a></h6>' : '<h6>'.get_the_title().'</h6>';
-
-				$event_list .= '<tr class="'.$event_custom_class.'">
-									<td>';
-				$event_list .= 			'<div class="side_date">
-											<div class="month">'.$month.'</div>
-											<div class="day">'.$dates.'</div>
-											<div class="year">'.$year.'</div>
-										</div>
-									</td>';
-
-				$event_list .= 		'<td>
-										<div class="event">
-											'.$event_title.'
-											<p>';
-
-				// If event is in user country, make it shine! 
-
-
-				// Load the full event address:
-				if ( !empty($event_place) ) { $event_list .= $event_place . ', '; }
-				if ( !empty($event_place_city) ) { $event_list .= $event_place_city . ', '; }
-				if ( !empty($event_place_state) ) { $event_list .= $event_place_state . ', '; }
-				if ( !empty($event_place_country) ) { $event_list .= $event_place_country; }
-
-
-				$event_list .= 				'</p>
-										</div>
-									</td>
-								</tr>';
-			endwhile; 
-			$event_list .= '</table>';
+		if ( false === ( $event_list = get_transient( 'ross_event_list' ) ) ) :
 		
-			restore_current_blog();
+			if(is_multisite()){ switch_to_blog(1); }
 
-			return $event_list;
-		else:
+			$events_query = new WP_Query ( $args );
+
+			if ( $events_query->have_posts() ): 
+
+				$event_list = '<table class="wpel_event_list" width="600" border="0" cellspacing="2">';
+				while ( $events_query->have_posts() ) : $events_query->the_post();
+
+					$event_starts = get_post_meta( get_the_ID(), 'event_date_start' , true );
+					$event_ends = get_post_meta( get_the_ID(), 'event_date_end' , true );
+					$month = date("M",strtotime($event_starts)); 
+					$year = date("Y",strtotime($event_starts)); 
+					$day_starts = date("d",strtotime($event_starts)); 
+					$day_ends = date("d",strtotime($event_ends)); 
+					$dates = ( !empty( $day_ends ) && $day_ends != $day_starts ) ? $day_starts .' - '. $day_ends : $day_starts; 
+
+					$event_place = get_post_meta( get_the_ID(), 'event_place' , true );
+					$event_place_city = get_post_meta( get_the_ID(), 'event_place_city' , true );
+					$event_place_state = get_post_meta( get_the_ID(), 'event_place_state' , true );
+					$event_place_country = get_post_meta( get_the_ID(), 'event_place_country' , true );
+					$event_link = get_post_meta( get_the_ID(), 'event_link' , true );
+
+
+					$event_custom_class = '';
+					if ( !empty($user_location['country']) && ( $user_location['country'] == lcfirst(strtolower($event_place_country)) ) ){
+						$event_custom_class = 'user_country';
+					}
+
+					$event_title = !empty($event_link) ? '<h6><a target="_blank" href="'.$event_link.'">'.get_the_title().'</a></h6>' : '<h6>'.get_the_title().'</h6>';
+
+					$event_list .= '<tr class="'.$event_custom_class.'">
+										<td>';
+					$event_list .= 			'<div class="side_date">
+												<div class="month">'.$month.'</div>
+												<div class="day">'.$dates.'</div>
+												<div class="year">'.$year.'</div>
+											</div>
+										</td>';
+
+					$event_list .= 		'<td>
+											<div class="event">
+												'.$event_title.'
+												<p>';
+
+					// If event is in user country, make it shine! 
+
+
+					// Load the full event address:
+					if ( !empty($event_place) ) { $event_list .= $event_place . ', '; }
+					if ( !empty($event_place_city) ) { $event_list .= $event_place_city . ', '; }
+					if ( !empty($event_place_state) ) { $event_list .= $event_place_state . ', '; }
+					if ( !empty($event_place_country) ) { $event_list .= $event_place_country; }
+
+
+					$event_list .= 				'</p>
+											</div>
+										</td>
+									</tr>';
+				endwhile; 
+				$event_list .= '</table>';
+
+				restore_current_blog();
+
+			else:
+				if(is_multisite()){ restore_current_blog(); }
+				wp_reset_postdata(); 
+
+				$event_list = '<p>' . __('No upcoming events','wp_events_list') . '</p>';
+
+			endif; 
+
 			if(is_multisite()){ restore_current_blog(); }
 			wp_reset_postdata(); 
-
-			$event_list = '<p>' . __('No upcoming events','wp_events_list') . '</p>';
-			return $event_list;
-
-		endif; 
-
-		if(is_multisite()){ restore_current_blog(); }
-		wp_reset_postdata(); 
+			set_transient( 'ross_event_list', $event_list, 12 * HOUR_IN_SECONDS );
+		
+		
+		endif;
+		
+		return $event_list;
 
 
 	}
