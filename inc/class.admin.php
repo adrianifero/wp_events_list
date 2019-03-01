@@ -148,6 +148,10 @@ class WPeventsList_Admin {
 			if ( !current_user_can( 'edit_post', $post_id ) )
 			return;
 		}
+		
+		delete_transient( 'ross_event_featured' );
+		delete_transient( 'ross_event_list' );
+		
 		$event_date_start = $_POST['event_date_start'];
 		update_post_meta( $post_id, 'event_date_start', $event_date_start);
 
