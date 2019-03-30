@@ -168,6 +168,7 @@ class WPeventsList_Shortcodes {
 				);
 		}
 
+		delete_transient( 'ross_event_list' );
 		if ( false === ( $event_list = get_transient( 'ross_event_list' ) ) ) :
 		
 			if(is_multisite()){ switch_to_blog(1); }

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Events List
  * Description: Display an Event list in your site with an easy to use interface and custom post types
- * Version: 0.2.0
+ * Version: 0.2.1
  * Author: Adrian Toro 
  * Domain Path: /languages
  * Text Domain: wp-events-list
@@ -32,6 +32,9 @@ class WPeventsList {
 		// Add meta box:
 		add_action( 'add_meta_boxes', array('WPeventsList_Admin','custom_event_metaboxes' ) );
 		add_action( 'save_post', array('WPeventsList_Admin','save_event' ) );
+		
+		// Delete transients on change:
+		add_action(  'transition_post_status',  array('WPeventsList_Admin','on_change'), 10, 3 );
 	
 		
 		add_action('edit_form_after_title', function() {

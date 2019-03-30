@@ -177,6 +177,15 @@ class WPeventsList_Admin {
 		update_post_meta( $post_id, 'event_link', $event_link);
 
 	}
+	
+	public static function on_change( $new_status, $old_status, $post ) {
+		
+		if ( $new_status != $old_status ) {
+			delete_transient( 'ross_event_featured' );
+			delete_transient( 'ross_event_list' );
+		}
+		
+	}
 
 
 }
