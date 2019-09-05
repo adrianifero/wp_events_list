@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Events List
  * Description: Display an Event list in your site with an easy to use interface and custom post types
- * Version: 0.2.1
+ * Version: 0.2.3
  * Author: Adrian Toro 
  * Domain Path: /languages
  * Text Domain: wp-events-list
@@ -10,6 +10,7 @@
 **/
 
 include( plugin_dir_path( __FILE__ ) . 'inc/class.posttypes.php');
+include( plugin_dir_path( __FILE__ ) . 'inc/class.rest.php');
 include( plugin_dir_path( __FILE__ ) . 'inc/class.shortcodes.php');
 include( plugin_dir_path( __FILE__ ) . 'inc/class.admin.php');
 

@@ -20,6 +20,9 @@ class WPeventsList_PostTypes {
 
 				// primitive/meta caps
 				'create_posts'           => 'create_events',
+				
+				
+      			'show_in_rest' => true,
 
 				// primitive caps used outside of map_meta_cap()
 				'edit_posts'             => 'edit_events',
